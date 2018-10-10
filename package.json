@@ -4,12 +4,14 @@
   "description": "Simple application server that prints a message at a given time in the future",
   "scripts": {
     "start": "node ./app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:acceptance": "mocha --opts ./test/mocha.acceptance.opts",
+    "test:unit": "mocha --opts ./test/mocha.unit.opts"
   },
   "keywords": [],
   "author": "Alexander Malka",
   "license": "ISC",
   "dependencies": {
+    "config": "^2.0.1",
     "express": "^4.16.3",
     "rsmq": "^0.9.2"
   },
@@ -17,6 +19,7 @@
     "node": ">=8.12.0"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
     "sinon": "^6.3.5"
