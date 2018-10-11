@@ -1,5 +1,4 @@
 const config = require('config');
-const boom = require('boom');
 const { validateParameters } = require('./validation');
 const redisClient = require('../../redis-client');
 const BadRequestError = require('../../errors/bad-request-error');
