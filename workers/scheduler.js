@@ -40,7 +40,7 @@ function scheduleItem(error, next) {
   });
 }
 
-module.exports = function startWorker() {
+function startScheduler() {
   // merge the inProgressSet into waitingSet
   redisClient.sunionstore(
     config.redis.waitingSet,
@@ -54,4 +54,6 @@ module.exports = function startWorker() {
       );
     }
   );
-};
+}
+
+module.exports = { scheduleItem, startScheduler };

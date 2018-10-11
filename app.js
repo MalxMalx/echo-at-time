@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { port, routes } = require('config');
 const echoPostHandler = require('./routes/echo/handler');
-const startScheduler = require('./workers/scheduler');
+const { startScheduler } = require('./workers/scheduler');
 const app = express();
 
 app.use(bodyParser.json());
