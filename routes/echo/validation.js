@@ -1,4 +1,4 @@
-const { maxEchoIntervalMs } = require('config');
+const { maxEchoIntervalMs, errorMessages } = require('config');
 
 function isValidTimeInMs(numeric) {
   return isNaN(Date.parse(new Date(numeric))) ? false : true;
@@ -27,11 +27,11 @@ function validateParameters({ time, message }) {
   const errors = [];
 
   if (!isValidTime(time)) {
-    errors.push('Invalid time');
+    errors.push(errorMessages.invalidTime);
   }
 
   if (!isValidMessage(message)) {
-    errors.push('Invalid message');
+    errors.push(errorMessages.invalidMessage);
   }
 
   return errors.length ? errors : null;
