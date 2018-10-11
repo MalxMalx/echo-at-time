@@ -3,9 +3,19 @@ module.exports = {
   acceptance: {
     baseUrl: 'http://localhost'
   },
-  apiPrefix: '/api/v1',
   routes: {
-    echo: '/echo'
+    echo: '/api/v1/echo'
   },
-  maxEchoIntervalMs: 31536000000 // 365 days
+  maxEchoIntervalMs: 31536000000, // 365 days
+  errorMessages: {
+    invalidTime: 'invalid time',
+    invalidMessage: 'invalid message'
+  },
+  redis: {
+    host: '127.0.0.1',
+    port: 6379,
+    prefix: 'echo',
+    waitingSet: 'waiting',
+    inProgressSet: 'inprogress'
+  }
 };
