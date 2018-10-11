@@ -2,7 +2,7 @@ const config = require('config');
 const { validateParameters } = require('./validation');
 const redisClient = require('../../redis-client');
 const BadRequestError = require('../../errors/bad-request-error');
-const print = require('../../utils/print');
+const { print } = require('../../utils');
 
 module.exports = function handlePost(req, res, next) {
   const errors = validateParameters(req.body);

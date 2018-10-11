@@ -1,12 +1,12 @@
 const config = require('config');
 const redisClient = require('../redis-client');
-const print = require('../utils/print');
-const runOnDate = require('../utils/run-on-date');
+const utils = require('../utils/index');
 
 function scheduleItem(error, next) {
   if (error) console.log(error);
 
   redisClient.spop(config.redis.waitingSet, (err, stringifiedItem) => {
+    if (err) return next(err, scheduleItem);
     if (stringifiedItem === null) return next(null, scheduleItem);
 
     const item = JSON.parse(stringifiedItem);
@@ -21,13 +21,13 @@ function scheduleItem(error, next) {
 
     if (item.time <= Date.now()) {
       // just print out immediately
-      print(item);
+      utils.print(item);
       return next(null, scheduleItem);
     }
 
     // schedule printing:
-    runOnDate(item.time, () => {
-      print(item);
+    utils.runOnDate(item.time, () => {
+      utils.print(item);
 
       // remove from inProgressSet
       redisClient.srem(config.redis.inProgressSet, stringifiedItem);
