@@ -24,8 +24,6 @@ function scheduleItem(error, next) {
       return next(null, scheduleItem);
     }
 
-    console.log('gonna schedule item', stringifiedItem);
-
     // schedule printing:
     runOnDate(item.time, () => {
       print(item);
