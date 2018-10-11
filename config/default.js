@@ -17,5 +17,6 @@ module.exports = {
     prefix: 'echo:',
     waitingSet: 'waiting',
     inProgressSet: 'inprogress'
-  }
+  },
+  printVerbose: true
 };

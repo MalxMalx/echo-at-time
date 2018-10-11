@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { port, routes } = require('config');
 const echoPostHandler = require('./routes/echo/handler');
+const startScheduler = require('./workers/scheduler');
 const app = express();
 
 app.use(bodyParser.json());
@@ -16,5 +17,7 @@ app.use((err, req, res, next) => {
     res.json(err.data);
   }
 });
+
+startScheduler();
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
